@@ -1,5 +1,5 @@
 {
-  "name": "@my/harness-spec",
+  "name": "@kidyfirst/harness-spec",
   "version": "0.1.0",
   "description": "Personalized AI workflow scaffolding for Claude Code, Codex, and Gemini CLI",
   "type": "module",

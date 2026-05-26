@@ -1,13 +1,13 @@
 # harness-coding
 
-`harness-coding` 是一个 monorepo，其中的 CLI 包名为 `@my/harness-spec`。
+`harness-coding` 是一个 monorepo，其中的 CLI 包名为 `@kidyfirst/harness-spec`。
 
 ## 使用方式
 
 先安装 CLI：
 
 ```bash
-npm install -g @my/harness-spec
+npm install -g @kidyfirst/harness-spec
 ```
 
 初始化项目时必须显式传入 `-p`：

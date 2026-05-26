@@ -1,13 +1,13 @@
 # harness-coding
 
-`harness-coding` is a monorepo. Its CLI package is `@my/harness-spec`.
+`harness-coding` is a monorepo. Its CLI package is `@kidyfirst/harness-spec`.
 
 ## Usage
 
 Install the CLI:
 
 ```bash
-npm install -g @my/harness-spec
+npm install -g @kidyfirst/harness-spec
 ```
 
 Initialize a project:
