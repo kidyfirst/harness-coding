@@ -1,0 +1,23 @@
+.DS_Store
+node_modules/
+dist/
+coverage/
+*.log
+*.tsbuildinfo
+.eslintcache
+.npm
+.pnpm-store/
+.cache/
+.playwright-mcp
+tmp/
+tmp1/
+
+# Local docs and scratch space
+.reference
+third/
+doc/
+smoke_test/
+
+# Test fixtures that generate personalized workflow roots
+/packages/cli/test/tmp/
+/packages/cli/.tmp/

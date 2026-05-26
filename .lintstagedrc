@@ -1,0 +1,10 @@
+{
+  "packages/cli/src/**/*.ts": [
+    "pnpm --filter @my/harness-spec exec eslint --fix",
+    "pnpm --filter @my/harness-spec exec prettier --write"
+  ],
+  "packages/cli/test/**/*.ts": [
+    "pnpm --filter @my/harness-spec exec eslint --fix",
+    "pnpm --filter @my/harness-spec exec prettier --write"
+  ]
+}

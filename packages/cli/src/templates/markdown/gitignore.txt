@@ -1,0 +1,15 @@
+# Harness Spec workflow gitignore
+# Runtime files that should not be committed
+
+# Project owner record (local to each project owner)
+.project-owner
+
+# Current task pointer (local state)
+.current-task
+
+# Session/window scoped runtime state
+.runtime/
+
+# Agent runtime files (in worktree)
+.agent-log
+.session-id

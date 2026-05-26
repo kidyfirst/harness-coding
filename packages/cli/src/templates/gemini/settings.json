@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{RUNTIME_CMD}} .gemini/hooks/session-start.js",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
+    "BeforeAgent": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{RUNTIME_CMD}} .gemini/hooks/inject-workflow-state.js",
+            "timeout": 15000
+          }
+        ]
+      }
+    ]
+  }
+}

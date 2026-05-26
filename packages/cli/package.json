@@ -1,0 +1,82 @@
+{
+  "name": "@my/harness-spec",
+  "version": "0.1.0",
+  "description": "Personalized AI workflow scaffolding for Claude Code, Codex, and Gemini CLI",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "harness-spec": "./bin/harness-spec.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "pnpm run clean && tsc && pnpm run copy-templates",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "copy-templates": "node scripts/copy-templates.js",
+    "dev": "tsc --watch",
+    "start": "node ./dist/cli/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src/ test/",
+    "lint:fix": "eslint src/ test/ --fix",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/",
+    "typecheck": "tsc --noEmit",
+    "lint:all": "pnpm lint",
+    "prepublishOnly": "pnpm test && pnpm run build && node -e \"const fs=require('node:fs'); fs.copyFileSync('../../README.md','README.md'); if (fs.existsSync('../../LICENSE')) fs.copyFileSync('../../LICENSE','LICENSE');\""
+  },
+  "keywords": [
+    "ai",
+    "workflow",
+    "claude",
+    "codex",
+    "gemini",
+    "cli",
+    "developer-tools",
+    "agent",
+    "memory",
+    "harness-spec"
+  ],
+  "author": "studystudyup",
+  "license": "AGPL-3.0-only",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "figlet": "^1.9.4",
+    "giget": "^3.1.1",
+    "inquirer": "^9.3.7",
+    "undici": "^6.21.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@types/figlet": "^1.7.0",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.17.10",
+    "@vitest/coverage-v8": "^4.0.18",
+    "eslint": "^9.18.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.21.0",
+    "vitest": "^4.0.18"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kidyfirst/harness-coding.git"
+  },
+  "harness": {
+    "spec-name": "ember-fjord-4827",
+    "language": "cn"
+  }
+}

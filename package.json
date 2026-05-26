@@ -1,0 +1,28 @@
+{
+  "name": "harness-coding",
+  "private": true,
+  "packageManager": "pnpm@10.20.0",
+  "scripts": {
+    "prepare": "husky",
+    "spec:init": "pnpm --filter @my/harness-spec build && node ./packages/cli/bin/harness-spec.js init --yes --codex",
+    "spec:update": "pnpm --filter @my/harness-spec build && node ./packages/cli/bin/harness-spec.js update",
+    "spec:uninstall": "pnpm --filter @my/harness-spec build && node ./packages/cli/bin/harness-spec.js uninstall",
+    "build": "pnpm --filter @my/harness-spec build",
+    "test": "pnpm --filter @my/harness-spec test",
+    "lint": "pnpm --filter @my/harness-spec lint",
+    "typecheck": "pnpm --filter @my/harness-spec typecheck",
+    "spec:publish": "pnpm --filter @my/harness-spec publish --access public --registry https://registry.npmjs.org",
+    "release": "pnpm --filter @my/harness-spec release",
+    "release:minor": "pnpm --filter @my/harness-spec release:minor",
+    "release:beta": "pnpm --filter @my/harness-spec release:beta",
+    "release:rc": "pnpm --filter @my/harness-spec release:rc"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0"
+  },
+  "harness": {
+    "spec-name": "harness",
+    "language": "cn"
+  }
+}

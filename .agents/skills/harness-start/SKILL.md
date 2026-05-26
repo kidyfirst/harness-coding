@@ -1,0 +1,112 @@
+---
+name: harness-start
+description: "Initializes an AI development session by reading workflow guides, project owner record, git status, active tasks, and project guidelines from the personalized workflow root. Classifies incoming tasks and routes to brainstorm, direct edit, or task workflow. Use when beginning a new coding session, resuming work, starting a new task, or re-establishing project context."
+---
+
+# Start Session（中文）
+
+初始化一个 Harness Spec 开发会话。该平台没有自动 session-start hook，因此需要手动加载等价上下文。
+
+---
+
+## 第一步：理解开发工作流
+
+先阅读工作流说明，理解整体开发流程：
+
+```bash
+cat .harness/workflow.md
+```
+
+请遵循 `workflow.md` 中的规则，包括核心原则、目录结构、阶段流转和最佳实践。
+
+## 第二步：获取当前上下文
+
+```bash
+node ./.harness/scripts/get_context.js
+```
+
+这会展示项目归属信息、git 状态、当前任务和活跃任务。
+
+## 第三步：读取规范索引
+
+```bash
+node ./.harness/scripts/get_context.js --mode packages
+```
+
+然后阅读相关规范索引：
+
+```bash
+cat .harness/spec/<package>/<layer>/index.md
+cat .harness/spec/guides/index.md
+```
+
+> 重要：索引文件只是导航。真正开始开发前，你必须回头阅读索引里列出的具体规范文件。
+
+## 第四步：汇报并询问
+
+汇报你当前了解到的上下文，然后问用户：“你希望我接下来做什么？”
+
+---
+
+## 任务分类
+
+当用户描述任务时，请先分类：
+
+| 类型 | 判断标准 | 处理方式 |
+|------|----------|----------|
+| **问题咨询** | 询问代码、架构、实现原理 | 直接回答 |
+| **极小修改** | typo、注释、小改动、几分钟内完成 | 直接处理 |
+| **简单任务** | 目标明确、范围清晰、1-2 个文件 | 快速确认后进入任务流 |
+| **复杂任务** | 目标模糊、跨文件、涉及设计决策 | 先 Brainstorm，再进入任务流 |
+
+### 判断原则
+
+如果拿不准，就走 Brainstorm + Task Workflow。
+
+这样可以让规范和上下文被正确注入，最终实现质量通常更高。
+
+---
+
+## 问题咨询 / 极小修改
+
+对于问题咨询或极小修改：
+
+1. 直接回答或直接修改
+2. 如果改了代码，提醒用户后续运行 `$finish-work`
+
+---
+
+## 简单任务
+
+对于简单、边界清晰的任务：
+
+1. 先快速确认理解
+2. 用户确认后，连续执行后续步骤，不要在中途反复打断
+3. 按顺序完成：建任务、写 PRD、做研究、配置上下文、激活任务、实现、检查、收尾
+
+---
+
+## 复杂任务：先 Brainstorm
+
+对于复杂或不明确的任务，自动进入 brainstorm 流程，不要跳过。
+
+流程摘要：
+
+1. 说明你的理解与分类
+2. 创建任务目录
+3. 一次只问一个关键问题，并持续更新 `prd.md`
+4. 给出候选方案，帮助用户做决策
+5. 在需求明确后再进入正式任务流
+
+---
+
+## 开始开发前
+
+真正进入实现前，请确保：
+
+- 任务目录和 `prd.md` 已创建
+- 已完成代码研究
+- `implement.jsonl` / `check.jsonl` 已配置
+- 已阅读相关规范
+
+这样才能进入稳定的 Harness Spec 实现流程。
